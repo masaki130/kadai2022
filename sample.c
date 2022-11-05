@@ -1,12 +1,12 @@
 /*SPDX-FileCopyrightText: 2022 Masaki Mitani*/
 /*SPDX-License-Identifier: BSD-3-Cause*/
 #include <stdio.h>	/*動作確認済み*/
-#include <ctype.h>	/*総英単語数も表示出来た！！*/	/*文字と回数のソート完了！！*/
-
+#include <ctype.h>	/*総英単語数も表示出来た！！*/	/*文字と回数のソート完了！！*/	/*乱数の表示も出来た！！*/
+#include <stdlib.h>	/*乱数で必要*/
 
 int main(void) {
 	char line[1000000];
-	int i;
+	int i, K;
 	int count[1000000];
 	int v = 0;
 
@@ -79,9 +79,14 @@ int main(void) {
 		printf("%cの出力回数は%d回です。\n",alpha[h], count[h]);	/*文字と回数のソート結果を表示　頻出順*/	
 	}
 	printf("\n");
-	printf("----英単語の総数は%d個です。----\n\n", v);			/*総英単語数を表示*/
+	printf("----英単語の総数：M = %d個です。----\n\n", v);			/*総英単語数を表示*/
 
-	/*printf("\n");*/
-	/*fclose(f);*/
+	for(int y = 0; y < 1; y++) {
+		K = rand() % v + 1;
+		printf("----生成した乱数：k = %d----\n", K);
+	}
+	/*K =*/ 
+
+
 	return 0;
 }
