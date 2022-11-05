@@ -5,19 +5,19 @@
 
 
 int main(void) {
-	char line[1000];
+	char line[1000000];
 	int i;
-	int count[110];
+	int count[1000000];
 	
 	printf("\n");
 	printf("----標準入力した英文の、数字や記号を空白に置換すると以下のようになる。----\n\n");
 
-	for(int k = -1; k < 100; k++) {			/*各出力回数を初期化しておく*/
+	for(int k = -1; k < 150; k++) {			/*各出力回数を初期化しておく*/
 		count[k+1] = 0;					/*最初の配列には、Aかaの出力回数が入る*/
 	}
 
-	FILE *f = fopen("result.c", "r");	/*result.c読み込む*/
-	while(fgets(line, 1000, f) != NULL) {		/*読み込んだデータを配列lineに格納*/
+	FILE *f = fopen("result2.c", "r");	/*result.c読み込む*/
+	while(fgets(line, 1000000, f) != NULL) {		/*読み込んだデータを配列lineに格納*/
 
 		/*printf("文字を入力してください\n");*/
 		/*scanf("%s", line);*/	/*&は要らない！！*/
@@ -46,31 +46,6 @@ int main(void) {
 	}
 
 /*whileのループ終了*/
-char line2[10000];
-int i2;
-printf("\n");
-printf("\n");
-printf("----先頭部の10行を、数字や記号を空白に置換して表示すると以下のようになる。----\n\n");
-
-FILE *c	= fopen("result.c", "r");
-while(fgets(line2, 10000, c) != NULL) {           /*読み込んだデータを配列lineに格納*/
-
-	for(i2 = 0; i2 < 1500; i2++) {              /*i2を変えることで、文字数を制限できる！！*/
-		if(isalpha(line2[i2])) {          /*配列がアルファベットかを判定*/
-			printf("%c", line2[i2]);  /*配列を出力  確認用*/
-
-		} else if(line2[i2] == 46) {      /*配列にピリオドが入った時*/
-			printf(".");
-		} else if(line2[i2] == '\0') {    /*配列にNULL文字が入った時*/
-			                                
-		} else {
-			printf(" ");            /*空白を出力*/
-		}
-	}
-}
-
-/*whileのループ終了*/
-
 
 	printf("\n");
 	printf("\n");
