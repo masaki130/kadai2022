@@ -1,14 +1,15 @@
 /*SPDX-FileCopyrightText: 2022 Masaki Mitani*/
 /*SPDX-License-Identifier: BSD-3-Cause*/
 #include <stdio.h>	/*動作確認済み*/
-#include <ctype.h>	/*最新版*/	/*A～Zまでの最終カウント数を表示できた！*/
+#include <ctype.h>	/*総英単語数も表示出来た！！*/	/*文字と回数のソート完了！！*/
 
 
 int main(void) {
 	char line[1000000];
 	int i;
 	int count[1000000];
-	
+	int v = 0;
+
 	printf("\n");
 	printf("----標準入力した英文の、数字や記号を空白に置換すると以下のようになる。----\n\n");
 
@@ -19,12 +20,10 @@ int main(void) {
 	FILE *f = fopen("result2.c", "r");	/*result.c読み込む*/
 	while(fgets(line, 1000000, f) != NULL) {		/*読み込んだデータを配列lineに格納*/
 
-		/*printf("文字を入力してください\n");*/
-		/*scanf("%s", line);*/	/*&は要らない！！*/
-			
 		for(i = 0; line[i] != '\0'; i++) {		/*ヌル文字判定できた！　文字が間違っていた*/
 			if(isalpha(line[i])) {		/*配列がアルファベットかを判定*/	
 				printf("%c", line[i]);	/*配列を出力  確認用*/
+				/*nNum = i + 1;*/		/*配列の要素数を格納　最終的に全文字数が分かる*/
 
 				for(int j = 0; j < 100; j++) {
 					if(line[i] == 65 + j || line[i]  == 97 + j) {		/*配列がAか、aに一致する時*/
@@ -44,10 +43,9 @@ int main(void) {
 			}
 		}
 	}
-
+	
 /*whileのループ終了*/
 
-	printf("\n");
 	printf("\n");
 
 	int NUM = 26;
@@ -71,11 +69,17 @@ int main(void) {
 			}
 		}
 	}
-
+	
+	printf("\n");
 	printf("----大文字と小文字を区別しない時、頻出順に並べると以下のようになる。----\n\n");
+
 	for(int h = 0; h < NUM; h++) {
-		printf("%cの出力回数は%d回です。\n",alpha[h], count[h]);	/*ソートの結果を表示　頻出順*/	
+		v += count[h];
+
+		printf("%cの出力回数は%d回です。\n",alpha[h], count[h]);	/*文字と回数のソート結果を表示　頻出順*/	
 	}
+	printf("\n");
+	printf("----英単語の総数は%d個です。----\n\n", v);			/*総英単語数を表示*/
 
 	/*printf("\n");*/
 	/*fclose(f);*/
