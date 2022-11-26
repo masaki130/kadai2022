@@ -3,6 +3,8 @@
 #include <stdio.h>	/*動作確認済み*/
 #include <ctype.h>	/*総英単語数も表示出来た！！*/	/*文字と回数のソート完了！！*/	/*乱数の表示も出来た！！*/
 #include <stdlib.h>	/*乱数で必要*/
+#include <time.h>
+#include <unistd.h>
 
 int main(void) {
 	char line[1000000];
@@ -82,19 +84,21 @@ int main(void) {
 	printf("----総英単語数：M = %d個です。----\n\n", v);			/*総英単語数を表示*/
 	
 	printf("----1次近似の文字列生成----\n\n");
-	for(int y = 0; y < 5000; y++) {		/*上限：乱数kを生成回数であり、line[K]の文字数でもある。*/
-		K = rand() % v + 1;
+	srand((unsigned int)time(NULL));
+	for(int y = 0; y < 15000; y++) {		/*上限y：乱数kは生成回数であり、line[K]の文字数でもある。*/
+		K = 1 + rand() % 117297;
 		/*printf("----生成した乱数：k = %d----\n\n", K);*/	/*確認用*/
 
 		if(isalpha(line[K])) {		/*この配列がアルファベットの時*/
-			printf("%c", line[K]);	/*アルファベットを出力*/
+		        /*printf("5");*/ printf("%c", line[K]);	/*アルファベットを出力*/
 
 		} else if(line[K] == 32){
 			printf(" ");		/*スペースの時、空白を出力*/
-		} else {			/*数字や記号の時、出力しない*/
-
+		} else {			/**/
+			/*printf(" ");*/	
 		}
-	}	
+	}
+	/*sleep(1);*/	
 	printf("\n\n");
 
 	return 0;
