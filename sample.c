@@ -85,10 +85,10 @@ int main(void) {
 	
 	printf("----1次近似の文字列生成----\n\n");
 	srand((unsigned int)time(NULL));
-	for(int y = 0; y < 15000; y++) {		/*上限y：乱数kは生成回数であり、line[K]の文字数でもある。*/
+	for(int y = 0; y < 15000; y++) {		/**/
 		K = 1 + rand() % 117297;
 		/*printf("----生成した乱数：k = %d----\n\n", K);*/	/*確認用*/
-
+		if(K < 117297) {
 		if(isalpha(line[K])) {		/*この配列がアルファベットの時*/
 		        /*printf("5");*/ printf("%c", line[K]);	/*アルファベットを出力*/
 
@@ -96,6 +96,7 @@ int main(void) {
 			printf(" ");		/*スペースの時、空白を出力*/
 		} else {			/**/
 			/*printf(" ");*/	
+		}
 		}
 	}
 	/*sleep(1);*/	
