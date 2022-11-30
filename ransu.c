@@ -1,8 +1,8 @@
-#include <stdio.h>
+#include <stdio.h>	/*gnuplotでグラフ化してみよう！*/
 #include <stdlib.h>
 #include <time.h>
-#define c 10
-#define m 10
+#define c 10	/*cを大きくしていき平均値を求める*/
+#define m 10	/*0からmまでの乱数を表示*/
 
 int main() 
 {
